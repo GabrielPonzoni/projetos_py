@@ -1,4 +1,4 @@
-#3. So#3. Solicite dois números inteiros "a" e "b" e imprima na tela se o resultado da subtração entre eles
+#3. Solicite dois números inteiros "a" e "b" e imprima na tela se o resultado da subtração entre eles
 #(a - b) resulta em número positivo ou negativo. Considere o zero como positivo;
 
 print('Informe dois número inteiros "a" e "b": ')
