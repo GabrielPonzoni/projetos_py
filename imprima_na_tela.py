@@ -2,5 +2,5 @@
 
 print('Gabriel')
 print('O de cima foi com texto fixo!')
-nome = Gabriel
+nome = 'Gabriel'
 print('Meu nome numa variável chamada "nome":',nome)
