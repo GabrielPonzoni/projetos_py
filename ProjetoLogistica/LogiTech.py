@@ -1,3 +1,11 @@
+
+def main():
+    
+	cabecalho() #1ºprimeiro passo foi criar o cabecalho que irá ficar fixo no topo da tela
+	menu() #2ºoutro passo importante é o menu 
+	resposta = int(input()) #3ºrecebendo valores	
+# end def-main
+
 def cabecalho():
     
 	print('-=-' * 20)
@@ -19,7 +27,6 @@ def menu():
     print('||() Sair')
     print('-=-' * 20)
 
-
-cabecalho()
-menu()
-resposta = int(input())
+if __name__ == "__main__": #1.1º criei a main
+	main()
+# end main
