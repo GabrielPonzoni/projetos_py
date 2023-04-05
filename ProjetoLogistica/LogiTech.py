@@ -3,7 +3,10 @@ def main():
     
 	cabecalho() #1ºprimeiro passo foi criar o cabecalho que irá ficar fixo no topo da tela
 	menu() #2ºoutro passo importante é o menu 
-	resposta = int(input()) #3ºrecebendo valores
+	resposta = int(input('Informe um índece do menu para ação desejada: ')) #3ºrecebendo valores
+	descricao_itens = ('Calça','Camisa','Camisa','Bermuda','Saia','Blusa','Moletom','Meia','Tênis')
+
+
 # end def-main
 
 def cabecalho():
@@ -32,36 +35,42 @@ def registrar_venda():
     """
     Purpose: 
     """ 
+    cabecalho()
 # end def
 
 def repor_estoque():
     """
     Purpose: 
-    """   
+    """ 
+    cabecalho()  
 # end def
 
 def mostrar_estoque():
     """
     Purpose: 
     """
+    cabecalho()
 # end def
 
 def mostrar_compras():
     """
     Purpose: 
     """
+    cabecalho()
 # end def
 
 def maior_compra():
     """
     Purpose: 
     """
+    cabecalho()
 # end def
 
 def sair():
     """
     Purpose: 
     """
+    cabecalho()
 # end def
 
 #fim das funções do menu
