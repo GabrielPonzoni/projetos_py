@@ -3,11 +3,14 @@ import os
 
 #variáveis globais
 estoque_produto_1 = 20
-venda_produto_1 = 0
+
+comprador = []
+quantidade_comprada = []
 
 def main():
+	global comprador, quantidade_comprada
+
 	fechar_programa = False
-	clear = lambda: print('\n'*100)
 	
 	while not fechar_programa:
 		sleep(2)
@@ -33,6 +36,10 @@ def main():
 			continue 
 # end def-main
 
+def clear():
+	clear = lambda: print('\n'*100)
+	return clear()
+# end def-clear
 
 def cabecalho():
 
@@ -64,44 +71,64 @@ def registrar_venda():
 	if false nao registra e imprime uma mensagem 
 	'''
 	global estoque_produto_1
+
 	cabecalho()
 	print('||                        MENU                            ||')
 	print('-=-' * 20)
 	print('||                   REGISTRAR VENDA                      ||')
 	print('||                                                        ||')
-	quantidade_validada = False
-	produto_validado = False
+
 	venda_realizada = False
 
-	while not produto_validado and not quantidade_validada:
+	nome_comprador = input('||Informe o nome do cliente: ')
 
-		nome_comprador = input('||Informe o nome do cliente: ')
+	while not venda_realizada:
+
 		codigo_produto = int(input('||Informe o código do produto: '))
-		quantidade = int(input('||Quantidade desejada desse produto: '))
-		quanti_prod = vendas(codigo_produto,quantidade) 
-		print(quanti_prod)
+		if codigo_produto > 0 and codigo_produto < 9:
+			quantidade = int(input('||Quantidade desejada desse produto: '))
+			quanti_prod = vendas(codigo_produto,quantidade) 
+			quanti_estoque = estoque(codigo_produto,0)
+			nome = produto(codigo_produto)
 
-		quantidade = int(input('QUantidade pra por no estoque: '))
-		quanti_prod = estoque(codigo_produto,quantidade)
-		print(quanti_prod)
+			if quanti_prod == None:
+				print('||>>> Não há estoque suficiente <<<')
+			else:
+				venda_realizada = True
+				print('Venda realizada com sucesso!')
+				print(f'Estoque do produto {nome} está com {quanti_estoque}')
+				#armazenar compra:
+				comprador.append(nome_comprador)
+				quantidade_comprada.append(quanti_prod)
 
-		# if total_produto >= 0:
-		# 	produto_validado = True
-		# 	quantidade_validada = True
-		# else:
-		# 	continue
+		elif codigo_produto == 0:
+			print('Voltando para o menu!')
+			sleep(3)
+			clear()
+			main()
+		else:
+			print('||>>> Codigo do produto inválido! <<<')
+		
+def produto(codigo_produto):
+	if codigo_produto == 1:
+		nome = 'Calça'
+		return nome
+	else:
+		print('Codigo não encontrado para >nome< do produto!')
+
 		
 
 def vendas(codigo_produto, quantidade): #1,10
-	global estoque_produto_1, venda_produto_1
+	global estoque_produto_1
 
 	if codigo_produto == 1:
 		if estoque_produto_1 >= quantidade:
 			estoque_produto_1 -= quantidade
-			venda_produto_1 += quantidade
 			return estoque_produto_1
 		else:
-			print('Não há estoque suficiente')
+			return None
+	else:
+		print('Código de produto não encontrado! ')
 
 def estoque(codigo_produto, quantidade):
 	global estoque_produto_1
@@ -131,9 +158,12 @@ def mostrar_estoque():
 
 def mostrar_compras():
 	"""
-	Purpose: 
+	Purpose: Mostrar as compras realizadas
 	"""
 	cabecalho()
+	for i in comprador:
+		print(comprador[i])
+		print(quantidade_comprada[i])
 # end def
 
 def maior_compra():
