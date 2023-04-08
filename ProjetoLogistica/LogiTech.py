@@ -99,7 +99,7 @@ def registrar_venda():
 				print(f'Estoque do produto {nome} está com {quanti_estoque}')
 				#armazenar compra:
 				comprador.append(nome_comprador)
-				quantidade_comprada.append(quanti_prod)
+				quantidade_comprada.append(quantidade)
 
 		elif codigo_produto == 0:
 			print('Voltando para o menu!')
@@ -161,9 +161,10 @@ def mostrar_compras():
 	Purpose: Mostrar as compras realizadas
 	"""
 	cabecalho()
-	for i in comprador:
-		print(comprador[i])
-		print(quantidade_comprada[i])
+	for compra in comprador:
+		print(compra)
+		for i in range(len(quantidade_comprada)):
+			print(quantidade_comprada[i])
 # end def
 
 def maior_compra():
