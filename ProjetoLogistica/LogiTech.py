@@ -1,3 +1,6 @@
+'''
+v1.334543454 COMO VOU TRABALHAR COM OS PREÇOS DO PRODUTO!? 
+'''
 from time import sleep
 import os
 
@@ -6,9 +9,12 @@ estoque_produto_1 = 20
 
 comprador = []
 quantidade_comprada = []
+produtos_lista = []
+preco_compra_lista = []
+preco_compra_lista_bruto = []
 
 def main():
-	global comprador, quantidade_comprada
+	global comprador, quantidade_comprada, produtos_lista, preco_compra_lista, preco_compra_lista_bruto
 
 	fechar_programa = False
 	
@@ -70,7 +76,7 @@ def registrar_venda():
 	Função: criar venda (venda_realizada), coleta o nome_cliente depois pede o código_produto e a quantidade desejada,
 	if false nao registra e imprime uma mensagem 
 	'''
-	global estoque_produto_1
+	global estoque_produto_1, valor_produto_1
 
 	cabecalho()
 	print('||                        MENU                            ||')
@@ -80,41 +86,85 @@ def registrar_venda():
 
 	venda_realizada = False
 
-	nome_comprador = input('||Informe o nome do cliente: ')
 
 	while not venda_realizada:
+		nome_comprador = input('||Informe o nome do cliente: ')
+		if nome_comprador == 'ADMIN':
+			print(' -- COMANDO DE ADMIN DO SISTEMA! PRECIONE 0 PARA DEBUGAR --')
+			comprador.extend(['Teste1','Teste2','Teste3','Teste4'])
+			quantidade_comprada.extend([1,2,3,4])
+			produtos_lista.extend(['Calça','Camisa','Bermuda','Saia'])
+			preco_compra_lista.extend([112.00,190.00,149.7,676.00])
+			preco_compra_lista_bruto.extend([112.00,95.00,49.00,169.00])
 
-		codigo_produto = int(input('||Informe o código do produto: '))
+		while True:
+			codigo_produto = input('||Informe o código do produto: ')
+			if codigo_produto.isnumeric():
+				codigo_produto = int(codigo_produto)
+				break
+			else:
+				print('Informe um código válido')
+		
 		if codigo_produto > 0 and codigo_produto < 9:
 			quantidade = int(input('||Quantidade desejada desse produto: '))
 			quanti_prod = vendas(codigo_produto,quantidade) 
 			quanti_estoque = estoque(codigo_produto,0)
-			nome = produto(codigo_produto)
+			nome, valor = produto(codigo_produto)
 
 			if quanti_prod == None:
 				print('||>>> Não há estoque suficiente <<<')
+			elif quantidade == 0:
+				print('Não posso fazer uma venda de 0 produtos!')
 			else:
-				venda_realizada = True
 				print('Venda realizada com sucesso!')
 				print(f'Estoque do produto {nome} está com {quanti_estoque}')
 				#armazenar compra:
 				comprador.append(nome_comprador)
 				quantidade_comprada.append(quantidade)
-
+				produtos_lista.append(nome)
+				#preços >aki<
+				valor_compra = quantidade * valor
+				preco_compra_lista.append(valor_compra)
+				preco_compra_lista_bruto.append(valor)
 		elif codigo_produto == 0:
-			print('Voltando para o menu!')
-			sleep(3)
-			clear()
-			main()
+			venda_realizada = True
+			print('Fechando a conta.. ... ..')
 		else:
 			print('||>>> Codigo do produto inválido! <<<')
 		
 def produto(codigo_produto):
 	if codigo_produto == 1:
 		nome = 'Calça'
-		return nome
+		valor = 112.00
+	elif codigo_produto == 2:
+		nome = 'Camisa'
+		valor = 95.00
+	elif codigo_produto == 3:
+		nome = 'Bermuda'
+		valor = 49.00
+	elif codigo_produto == 4:
+		nome = 'Saia'
+		valor = 169.00
+	elif codigo_produto == 5:
+		nome = 'Blusa'
+		valor = 120.00
+	elif codigo_produto == 6:
+		nome = 'Moletom'
+		valor = 135.00
+	elif codigo_produto == 7:
+		nome = 'Meia'
+		valor = 12.99
+	elif codigo_produto == 8:
+		nome = 'Tênis'
+		valor = 183.00
+	elif codigo_produto == 9:
+		nome = 'Bota'
+		valor = 219.90
 	else:
 		print('Codigo não encontrado para >nome< do produto!')
+		return None, 0
+	
+	return nome,valor
 
 		
 
@@ -161,10 +211,24 @@ def mostrar_compras():
 	Purpose: Mostrar as compras realizadas
 	"""
 	cabecalho()
-	for compra in comprador:
-		print(compra)
-		for i in range(len(quantidade_comprada)):
-			print(quantidade_comprada[i])
+	print('-=-' * 20)
+	print('||                Produtos Comprados                      ||')
+	print('||                                                        ||')
+	print('-=-' * 20)
+	for i in range(len(produtos_lista)):
+		print('||                                                        ||')
+		print(f'||{i+1}ª compra foi de {quantidade_comprada[i]}x {produtos_lista[i]} sendo 1x valendo R$ {preco_compra_lista_bruto[i]:.2f}')
+		print(f'||	O valor dessa compra deu: R$ {preco_compra_lista[i]:.2f}          ||')
+	print('||                                                        ||')
+	print('-=-' * 20)
+	print('||                FIM DA LISTA DE PRODUTOS                ||')
+	soma = sum(preco_compra_lista)
+	print(f'||     Total da compra................: R${soma}          ||')
+	print('||                                                        ||')
+	print('-=-' * 20)
+	print("Pressione Enter para continuar...")
+	input()
+	main()
 # end def
 
 def maior_compra():
