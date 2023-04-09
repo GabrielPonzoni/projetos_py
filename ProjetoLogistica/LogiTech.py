@@ -1,11 +1,29 @@
 '''
-v1.334543454 COMO VOU TRABALHAR COM OS PREÇOS DO PRODUTO!? 
+v1.5 Terminar de configurar o banco de dados
 '''
 from time import sleep
 import os
 
 #variáveis globais
 estoque_produto_1 = 20
+estoque_produto_2 = 18
+estoque_produto_3 = 23
+estoque_produto_4 = 12
+estoque_produto_5 = 9
+estoque_produto_6 = 4
+estoque_produto_7 = 17
+estoque_produto_8 = 8
+estoque_produto_9 = 3
+
+calca = [1, 'Calça', 20, 112.00]
+camisa = [2, "Camisa", 18, 95.00]
+bermuda = [3, "Bermuda", 23, 49.90]
+saia = [4, "Saia", 12, 169.00]
+blusa = [5, "Blusa", 9, 120.00]
+moletom = [6, "Moletom", 4, 135.00]
+meia = [7, "Meia", 17, 12.99]
+tenis = [8, "Tenis", 8, 183.00]
+bota = [9, "Bota", 3, 219.90]
 
 comprador = []
 quantidade_comprada = []
@@ -76,7 +94,7 @@ def registrar_venda():
 	Função: criar venda (venda_realizada), coleta o nome_cliente depois pede o código_produto e a quantidade desejada,
 	if false nao registra e imprime uma mensagem 
 	'''
-	global estoque_produto_1, valor_produto_1
+	global estoque_produto_1
 
 	cabecalho()
 	print('||                        MENU                            ||')
@@ -105,8 +123,17 @@ def registrar_venda():
 			else:
 				print('Informe um código válido')
 		
-		if codigo_produto > 0 and codigo_produto < 9:
-			quantidade = int(input('||Quantidade desejada desse produto: '))
+		if codigo_produto > 0 and codigo_produto <= 9:
+			
+			while True:
+				quantidade = input('||Quantidade desejada desse produto: ')
+				if quantidade.isnumeric():
+					quantidade = int(quantidade)
+					if quantidade >= 0:
+						break
+				else:
+					print('Informe um número inteiro positivo!')
+			
 			quanti_prod = vendas(codigo_produto,quantidade) 
 			quanti_estoque = estoque(codigo_produto,0)
 			nome, valor = produto(codigo_produto)
@@ -169,7 +196,7 @@ def produto(codigo_produto):
 		
 
 def vendas(codigo_produto, quantidade): #1,10
-	global estoque_produto_1
+	global estoque_produto_1, estoque_produto_2, estoque_produto_3, estoque_produto_4, estoque_produto_5, estoque_produto_6, estoque_produto_7, estoque_produto_8, estoque_produto_9
 
 	if codigo_produto == 1:
 		if estoque_produto_1 >= quantidade:
@@ -177,22 +204,73 @@ def vendas(codigo_produto, quantidade): #1,10
 			return estoque_produto_1
 		else:
 			return None
+	elif codigo_produto == 2:
+		if estoque_produto_2 >= quantidade:
+			estoque_produto_2 -= quantidade
+			return estoque_produto_2
+		else:
+			return None
+	elif codigo_produto == 3:
+		if estoque_produto_3 >= quantidade:
+			estoque_produto_3 -= quantidade
+			return estoque_produto_3
+		else:
+			return None
+	elif codigo_produto == 4:
+		if estoque_produto_4 >= quantidade:
+			estoque_produto_4 -= quantidade
+			return estoque_produto_4
+		else:
+			return None
+	elif codigo_produto == 5:
+		if estoque_produto_5 >= quantidade:
+			estoque_produto_5 -= quantidade
+			return estoque_produto_5
+		else:
+			return None
+	elif codigo_produto == 6:
+		if estoque_produto_6 >= quantidade:
+			estoque_produto_6 -= quantidade
+			return estoque_produto_6
+		else:
+			return None
+	elif codigo_produto == 7:
+		if estoque_produto_7 >= quantidade:
+			estoque_produto_7 -= quantidade
+			return estoque_produto_7
+		else:
+			return None
+	elif codigo_produto == 8:
+		if estoque_produto_8 >= quantidade:
+			estoque_produto_8 -= quantidade
+			return estoque_produto_8
+	elif codigo_produto == 9:
+		if estoque_produto_9 >= quantidade:
+			estoque_produto_9 -= quantidade
+			return estoque_produto_9
 	else:
 		print('Código de produto não encontrado! ')
 
 def estoque(codigo_produto, quantidade):
-	global estoque_produto_1
+	global estoque_produto_1, estoque_produto_2, estoque_produto_3, estoque_produto_4, estoque_produto_5, estoque_produto_6, estoque_produto_7, estoque_produto_8, estoque_produto_9
 
 	if codigo_produto == 1:
 		estoque_produto_1 += quantidade
 		return estoque_produto_1
+	elif codigo_produto == 2:
+		estoque_produto_2 += quantidade
+		return estoque_produto_2
+	elif codigo_produto == 3:
+		estoque_produto_3 += quantidade
+		return estoque_produto_3
+	elif codigo_produto == 4:
+		estoque_produto_4 += quantidade
 	else:
 		print('Produto não encontrado')
 
-
 def repor_estoque():
 	"""
-	Purpose: 
+	Purpose:
 	""" 
 	cabecalho()  
 	print('Repor estoque...')
@@ -200,10 +278,23 @@ def repor_estoque():
 
 def mostrar_estoque():
 	"""
-	Purpose: 
+	Purpose: Mostrar o estoque dos produtos
 	"""
 	cabecalho()
-	print('mostrar estoque')
+	mostrarEstoque = input("Deseja ver o estoque? [s/n]")
+  
+	if mostrarEstoque == "n":
+		return menu()
+	elif mostrarEstoque == "s":
+		print("Código do produto: {}\nItem: {}\nQuantidade no estoque: {}".format(calca [0],calca [1],calca [2]))
+		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}".format(camisa [0],camisa [1],camisa [2]))
+		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}".format(bermuda [0],bermuda [1],bermuda [2]))
+		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}".format(saia [0],saia [1],saia [2]))
+		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}".format(blusa [0],blusa [1],blusa [2]))
+		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}".format(moletom [0],moletom [1],moletom [2]))
+		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}".format(meia [0],meia [1],meia [2]))
+		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}".format(tenis [0],tenis [1],tenis [2]))
+		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}".format(bota [0],bota [1],bota [2]))
 # end def
 
 def mostrar_compras():
@@ -217,8 +308,8 @@ def mostrar_compras():
 	print('-=-' * 20)
 	for i in range(len(produtos_lista)):
 		print('||                                                        ||')
-		print(f'||{i+1}ª compra foi de {quantidade_comprada[i]}x {produtos_lista[i]} sendo 1x valendo R$ {preco_compra_lista_bruto[i]:.2f}')
-		print(f'||	O valor dessa compra deu: R$ {preco_compra_lista[i]:.2f}          ||')
+		print(f'||{i+1}ª compra foi de {quantidade_comprada[i]}x {produtos_lista[i]} sendo 1x valendo R$ {preco_compra_lista_bruto[i]:.2f}    ||')
+		print(f'||	O valor dessa compra deu: R$ {preco_compra_lista[i]:.2f}               ||')
 	print('||                                                        ||')
 	print('-=-' * 20)
 	print('||                FIM DA LISTA DE PRODUTOS                ||')
