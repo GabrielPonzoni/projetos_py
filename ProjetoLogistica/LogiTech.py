@@ -1,5 +1,5 @@
 '''
-v1.5 Terminar de configurar o banco de dados
+v1.6 código finalizado
 '''
 from time import sleep
 import os
@@ -15,15 +15,15 @@ estoque_produto_7 = 17
 estoque_produto_8 = 8
 estoque_produto_9 = 3
 
-calca = [1, 'Calça', 20, 112.00]
-camisa = [2, "Camisa", 18, 95.00]
-bermuda = [3, "Bermuda", 23, 49.90]
-saia = [4, "Saia", 12, 169.00]
-blusa = [5, "Blusa", 9, 120.00]
-moletom = [6, "Moletom", 4, 135.00]
-meia = [7, "Meia", 17, 12.99]
-tenis = [8, "Tenis", 8, 183.00]
-bota = [9, "Bota", 3, 219.90]
+calca = [1, 'Calça', estoque_produto_1, 112.00, estoque_produto_1 * 112.00]
+camisa = [2, "Camisa", estoque_produto_2, 95.00, estoque_produto_2 * 95.00]
+bermuda = [3, "Bermuda", estoque_produto_3, 49.90, estoque_produto_3 * 49.90]
+saia = [4, "Saia", estoque_produto_4, 169.00, estoque_produto_4 * 169.00]
+blusa = [5, "Blusa", estoque_produto_5, 120.00, estoque_produto_5 * 120.00]
+moletom = [6, "Moletom", estoque_produto_6, 135.00, estoque_produto_6 * 135.00]
+meia = [7, "Meia", estoque_produto_7, 12.99, estoque_produto_7 * 12.99]
+tenis = [8, "Tenis", estoque_produto_8, 183.00, estoque_produto_8 * 183.00]
+bota = [9, "Bota", estoque_produto_9, 219.90, estoque_produto_9 * 219.90]
 
 comprador = []
 quantidade_comprada = []
@@ -265,15 +265,69 @@ def estoque(codigo_produto, quantidade):
 		return estoque_produto_3
 	elif codigo_produto == 4:
 		estoque_produto_4 += quantidade
+		return estoque_produto_4
+	elif codigo_produto == 5:
+		estoque_produto_5 += quantidade
+		return estoque_produto_5
+	elif codigo_produto == 6:
+		estoque_produto_6 += quantidade
+		return estoque_produto_6
+	elif codigo_produto == 7:
+		estoque_produto_7 += quantidade
+		return estoque_produto_7
+	elif codigo_produto == 8:
+		estoque_produto_8 += quantidade
+		return estoque_produto_8
+	elif codigo_produto == 9:
+		estoque_produto_9 += quantidade
+		return estoque_produto_9
 	else:
 		print('Produto não encontrado')
 
 def repor_estoque():
-	"""
-	Purpose:
-	""" 
-	cabecalho()  
-	print('Repor estoque...')
+    """
+    Purpose: Por coisas no estoque
+    """ 
+    cabecalho()  
+    estoque_realizado = False
+    while not estoque_realizado:
+        while True:
+            codigo_produto = input('||Informe o código do produto: ')
+            if codigo_produto.isnumeric():
+                codigo_produto = int(codigo_produto)
+                if codigo_produto >= 0:
+                    break
+            else:
+                print('Informe um código válido')
+                
+        if codigo_produto > 0 and codigo_produto <= 9:
+            estoque_nome = produto(codigo_produto)
+            estoque_quant = vendas(codigo_produto, 0)
+            print(f'Estoque atual de {estoque_nome[0]}: {estoque_quant}')
+            while True:
+                quantidade = input('||Quantidade para colocar no estoque: ')
+                if quantidade.isnumeric():
+                    quantidade = int(quantidade)
+                    if quantidade >= 0:
+                        break
+                    else:
+                        print('Informe um número inteiro positivo!')
+                else:
+                    print('Informe um número inteiro positivo!')
+            
+            novo_estoque_quant = estoque(codigo_produto, quantidade)
+            print(f'Agora {estoque_nome[0]} tem um estoque de {novo_estoque_quant}')
+            while True:
+                resposta = input('Deseja colocar mais estoque? S/N ')
+                if resposta.upper() == 'S':
+                    print('Vamos registrar mais um produto')
+                    break
+                elif resposta.upper() == 'N':
+                    estoque_realizado = True
+                    break
+                else:
+                    print('Não entendi...')
+                    continue
 # end def
 
 def mostrar_estoque():
@@ -284,17 +338,20 @@ def mostrar_estoque():
 	mostrarEstoque = input("Deseja ver o estoque? [s/n]")
   
 	if mostrarEstoque == "n":
-		return menu()
+		return main()
 	elif mostrarEstoque == "s":
-		print("Código do produto: {}\nItem: {}\nQuantidade no estoque: {}".format(calca [0],calca [1],calca [2]))
-		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}".format(camisa [0],camisa [1],camisa [2]))
-		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}".format(bermuda [0],bermuda [1],bermuda [2]))
-		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}".format(saia [0],saia [1],saia [2]))
-		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}".format(blusa [0],blusa [1],blusa [2]))
-		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}".format(moletom [0],moletom [1],moletom [2]))
-		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}".format(meia [0],meia [1],meia [2]))
-		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}".format(tenis [0],tenis [1],tenis [2]))
-		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}".format(bota [0],bota [1],bota [2]))
+		print("Código do produto: {}\nItem: {}\nQuantidade no estoque: {}\nValor unitário: {}\nValor total: {}".format(calca [0],calca [1],calca [2], calca [3], calca[4]))
+		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}\nValor unitário: {}\nValor total: {}".format(camisa [0],camisa [1],camisa [2], camisa[3], camisa[4]))
+		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}\nValor unitário: {}\nValor total: {}".format(bermuda [0],bermuda [1],bermuda [2], bermuda[3], bermuda[4]))
+		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}\nValor unitário: {}\nValor total: {}".format(saia [0],saia [1],saia [2],saia [3],saia [4]))
+		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}\nValor unitário: {}\nValor total: {}".format(blusa [0],blusa [1],blusa [2], blusa [3], blusa[4]))
+		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}\nValor unitário: {}\nValor total: {}".format(moletom [0],moletom [1],moletom [2], moletom[3], moletom[4]))
+		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}\nValor unitário: {}\nValor total: {}".format(meia [0],meia [1],meia [2], meia[3], meia[4]))
+		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}\nValor unitário: {}\nValor total: {}".format(tenis [0],tenis [1],tenis [2], tenis[3], tenis[4]))
+		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}\nValor unitário: {}\nValor total: {}".format(bota [0],bota [1],bota [2], bota [3], bota[4]))
+		print('Pressione ENTER para voltar ao menu!')
+		input()
+		main()
 # end def
 
 def mostrar_compras():
@@ -323,17 +380,28 @@ def mostrar_compras():
 # end def
 
 def maior_compra():
-	"""
-	Purpose: 
-	"""
-	cabecalho()
-# end def
+	'''
+	Função: encontrar a maior compra realizada por um usuário
+	'''
+	global comprador, preco_compra_lista
 
-def sair():
-	"""
-	Purpose: 
-	"""
 	cabecalho()
+	print('||                        MENU                            ||')
+	print('-=-' * 20)
+	print('||                   MAIOR COMPRA                        ||')
+	print('||                                                        ||')
+
+	if not comprador:
+		print('Nenhuma compra registrada ainda.')
+		return
+
+	maior_valor = max(preco_compra_lista)  # Encontra o maior valor na lista de preços
+	index_maior_valor = preco_compra_lista.index(maior_valor)  # Encontra o índice do maior valor
+	nome_comprador = comprador[index_maior_valor]  # Obtém o nome do comprador correspondente ao maior valor
+	valor_compra = preco_compra_lista_bruto[index_maior_valor]  # Obtém o valor bruto da compra correspondente ao maior valor
+
+	print(f'O maior valor de compra foi de {nome_comprador}, com o valor de R${maior_valor:.2f}.')
+	print(f'Valor bruto da compra: R${valor_compra:.2f}.')
 # end def
 
 #fim das funções do menu
