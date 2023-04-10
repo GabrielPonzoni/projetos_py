@@ -1,5 +1,5 @@
 '''
-v1.6 código finalizado
+v1.7 código bruto finalizado
 '''
 from time import sleep
 import os
@@ -14,16 +14,6 @@ estoque_produto_6 = 4
 estoque_produto_7 = 17
 estoque_produto_8 = 8
 estoque_produto_9 = 3
-
-calca = [1, 'Calça', estoque_produto_1, 112.00, estoque_produto_1 * 112.00]
-camisa = [2, "Camisa", estoque_produto_2, 95.00, estoque_produto_2 * 95.00]
-bermuda = [3, "Bermuda", estoque_produto_3, 49.90, estoque_produto_3 * 49.90]
-saia = [4, "Saia", estoque_produto_4, 169.00, estoque_produto_4 * 169.00]
-blusa = [5, "Blusa", estoque_produto_5, 120.00, estoque_produto_5 * 120.00]
-moletom = [6, "Moletom", estoque_produto_6, 135.00, estoque_produto_6 * 135.00]
-meia = [7, "Meia", estoque_produto_7, 12.99, estoque_produto_7 * 12.99]
-tenis = [8, "Tenis", estoque_produto_8, 183.00, estoque_produto_8 * 183.00]
-bota = [9, "Bota", estoque_produto_9, 219.90, estoque_produto_9 * 219.90]
 
 comprador = []
 quantidade_comprada = []
@@ -335,21 +325,44 @@ def mostrar_estoque():
 	Purpose: Mostrar o estoque dos produtos
 	"""
 	cabecalho()
-	mostrarEstoque = input("Deseja ver o estoque? [s/n]")
-  
+	print('||                                                        ||')
+	print('||                         ESTOQUE                        ||')
+	print('-=-' * 20)
+
+	calca = [1, 'Calça', estoque_produto_1, 112.00, estoque_produto_1 * 112.00]
+	camisa = [2, "Camisa", estoque_produto_2, 95.00, estoque_produto_2 * 95.00]
+	bermuda = [3, "Bermuda", estoque_produto_3, 49.90, estoque_produto_3 * 49.90]
+	saia = [4, "Saia", estoque_produto_4, 169.00, estoque_produto_4 * 169.00]
+	blusa = [5, "Blusa", estoque_produto_5, 120.00, estoque_produto_5 * 120.00]
+	moletom = [6, "Moletom", estoque_produto_6, 135.00, estoque_produto_6 * 135.00]
+	meia = [7, "Meia", estoque_produto_7, 12.99, estoque_produto_7 * 12.99]
+	tenis = [8, "Tenis", estoque_produto_8, 183.00, estoque_produto_8 * 183.00]
+	bota = [9, "Bota", estoque_produto_9, 219.90, estoque_produto_9 * 219.90]
+	
+	print("||Deseja ver o estoque? [s/n]                               ||")
+	mostrarEstoque = input('||')
 	if mostrarEstoque == "n":
 		return main()
 	elif mostrarEstoque == "s":
-		print("Código do produto: {}\nItem: {}\nQuantidade no estoque: {}\nValor unitário: {}\nValor total: {}".format(calca [0],calca [1],calca [2], calca [3], calca[4]))
-		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}\nValor unitário: {}\nValor total: {}".format(camisa [0],camisa [1],camisa [2], camisa[3], camisa[4]))
-		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}\nValor unitário: {}\nValor total: {}".format(bermuda [0],bermuda [1],bermuda [2], bermuda[3], bermuda[4]))
-		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}\nValor unitário: {}\nValor total: {}".format(saia [0],saia [1],saia [2],saia [3],saia [4]))
-		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}\nValor unitário: {}\nValor total: {}".format(blusa [0],blusa [1],blusa [2], blusa [3], blusa[4]))
-		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}\nValor unitário: {}\nValor total: {}".format(moletom [0],moletom [1],moletom [2], moletom[3], moletom[4]))
-		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}\nValor unitário: {}\nValor total: {}".format(meia [0],meia [1],meia [2], meia[3], meia[4]))
-		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}\nValor unitário: {}\nValor total: {}".format(tenis [0],tenis [1],tenis [2], tenis[3], tenis[4]))
-		print("\nCódigo do produto: {}\nItem: {}\nQuantidade no estoque: {}\nValor unitário: {}\nValor total: {}".format(bota [0],bota [1],bota [2], bota [3], bota[4]))
-		print('Pressione ENTER para voltar ao menu!')
+		print("||Código do produto: {}\n||Item: {}\n||Quantidade no estoque: {}\n||Valor unitário: {}\n||Valor total: {}".format(calca [0],calca [1],calca [2], calca [3], calca[4]))
+		print('-=-' * 20)
+		print("||\n||Código do produto: {}\n||Item: {}\n||Quantidade no estoque: {}\n||Valor unitário: {}\n||Valor total: {}".format(camisa [0],camisa [1],camisa [2], camisa[3], camisa[4]))
+		print('-=-' * 20)
+		print("||\n||Código do produto: {}\n||Item: {}\n||Quantidade no estoque: {}\n||Valor unitário: {}\n||Valor total: {}".format(bermuda [0],bermuda [1],bermuda [2], bermuda[3], bermuda[4]))
+		print('-=-' * 20)
+		print("||\n||Código do produto: {}\n||Item: {}\n||Quantidade no estoque: {}\n||Valor unitário: {}\n||Valor total: {}".format(saia [0],saia [1],saia [2],saia [3],saia [4]))
+		print('-=-' * 20)
+		print("||\n||Código do produto: {}\n||Item: {}\n||Quantidade no estoque: {}\n||Valor unitário: {}\n||Valor total: {}".format(blusa [0],blusa [1],blusa [2], blusa [3], blusa[4]))
+		print('-=-' * 20)
+		print("||\n||Código do produto: {}\n||Item: {}\n||Quantidade no estoque: {}\n||Valor unitário: {}\n||Valor total: {}".format(moletom [0],moletom [1],moletom [2], moletom[3], moletom[4]))
+		print('-=-' * 20)
+		print("||\n||Código do produto: {}\n||Item: {}\n||Quantidade no estoque: {}\n||Valor unitário: {}\n||Valor total: {}".format(meia [0],meia [1],meia [2], meia[3], meia[4]))
+		print('-=-' * 20)
+		print("||\n||Código do produto: {}\n||Item: {}\n||Quantidade no estoque: {}\n||Valor unitário: {}\n||Valor total: {}".format(tenis [0],tenis [1],tenis [2], tenis[3], tenis[4]))
+		print('-=-' * 20)
+		print("||\n||Código do produto: {}\n||Item: {}\n||Quantidade no estoque: {}\n||Valor unitário: {}\n||Valor total: {}".format(bota [0],bota [1],bota [2], bota [3], bota[4]))
+		print('-=-' * 20)
+		print('||Pressione ENTER para voltar ao menu!')
 		input()
 		main()
 # end def
