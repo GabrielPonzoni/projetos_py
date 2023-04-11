@@ -1,5 +1,14 @@
 '''
-v1.7 código bruto finalizado
+Nome do programa: LogiTech Soluções em Logistica
+Descrição: Este programa é um protótiopo de um sistema de estoque de uma loja, onde temos um menu e 5
+opções de funções principais, sendo elas: Registrar_Venda, Repor_Estoque, Mostrar_Estoque, 
+Mostrar_Compras e Maior_Compra. O desafio proposto foi criar o código sem o uso do paradigma orientado a 
+objetos.
+Autores: Gabriel Ponzoni, Artur Pires, Lohana Braun e Saulo Peixoto
+Data de criação: 9 de abril de 2023
+Versão: 1.7 - Código Bruto Finalizado e Comentado
+Instruções de uso: Necessário uso de interpretador python 3.0 
+Restrições de uso: None
 '''
 from time import sleep #biblioteca que possui um sys PAUSE por tanto tempo
 
