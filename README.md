@@ -35,7 +35,7 @@
 Esse repositório é como se fosse uma apostila de exercícios resolvidos por [mim](https://github.com/GabrielPonzoni). Os exercícios postados nesse ambiente foram extraidos de vários lugares: não tenho como definir quem foi que propôs os desafios. 
 
 ### Lista de exercícios 1 - Lista com exercícios bem básicos dos conhecimentos de IN/OUT em Python
- 1. [imprima_entrada_data.py]https://github.com/GabrielPonzoni/projetos_py/tree/main/Atividades1#:~:text=imprima_entrada_data.py
+ 1. [imprima_entrada_data.py](https://github.com/GabrielPonzoni/projetos_py/tree/main/Atividades1#:~:text=imprima_entrada_data.py)
  2.
  3.
  4.
