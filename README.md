@@ -35,16 +35,16 @@
 Esse repositório é como se fosse uma apostila de exercícios resolvidos por [mim](https://github.com/GabrielPonzoni). Os exercícios postados nesse ambiente foram extraidos de vários lugares: não tenho como definir quem foi que propôs os desafios. 
 
 ### Lista de exercícios 1 - Lista com exercícios bem básicos dos conhecimentos de IN/OUT em Python
- 1. [imprima_entrada_data.py](https://github.com/GabrielPonzoni/projetos_py/tree/main/Atividades1#:~:text=imprima_entrada_data.py)
- 2.
- 3.
- 4.
- 5.
- 6.
- 7.
- 8.
- 9.
- 10.
+ 1. [imprima_entrada_data.py](https://github.com/GabrielPonzoni/projetos_py/blob/main/Atividades1/imprima_entrada_data.py)
+ 2. [imprima_entrada_data_mes.py](https://github.com/GabrielPonzoni/projetos_py/blob/main/Atividades1/imprima_entrada_data_mes.py)
+ 3. [imprima_entrada_dia_mes_ano.py](https://github.com/GabrielPonzoni/projetos_py/blob/main/Atividades1/imprima_entrada_dia_mes_ano.py)
+ 4. [imprima_entrada_float_string.py](https://github.com/GabrielPonzoni/projetos_py/blob/main/Atividades1/imprima_entrada_float_string.py)
+ 5. [imprima_entrada_tres_num_float.py](https://github.com/GabrielPonzoni/projetos_py/blob/main/Atividades1/imprima_entrada_tres_num_float.py)
+ 6. [imprima_na_tela.py](https://github.com/GabrielPonzoni/projetos_py/blob/main/Atividades1/imprima_na_tela.py)
+ 7. [imprima_na_tela_num_decimal.py](https://github.com/GabrielPonzoni/projetos_py/blob/main/Atividades1/imprima_na_tela_num_decimal.py)
+ 8. [imprima_na_tela_num_format.py](https://github.com/GabrielPonzoni/projetos_py/blob/main/Atividades1/imprima_na_tela_num_format.py)
+ 9. [imprima_na_tela_numeros.py](https://github.com/GabrielPonzoni/projetos_py/blob/main/Atividades1/imprima_na_tela_numeros.py)
+ 10. []
 ### Lista de exercícios 2
  1.
  2.
