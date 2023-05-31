@@ -87,18 +87,23 @@ def opcoes_menu():
     escolha = input("Seleciona a opção desejada: ")
     if escolha == "1":
        custo_km_rodado = add_cust_km(custo_km_rodado)
+    elif escolha in ("2", "3", "4") and not custo_km_rodado:  # verifica se a variável custo_km_rodado não está definida antes de continuar
+        print(">>> A opção", escolha, "só pode ser acessada após definir o custo por km rodado. Por favor escolha a opção 1 para definir o custo.")
+        sleep(2)
     elif escolha == "2":
+        # executa a opção 2 somente se a variável custo_km_rodado estiver definida
         print('Opção 2')
     elif escolha == "3":
+        # executa a opção 3 somente se a variável custo_km_rodado estiver definida
         print('Opção 3')
     elif escolha == "4":
+        # executa a opção 4 somente se a variável custo_km_rodado estiver definida
         print('Opção 4')
     elif escolha == "5":
         sair()
     else:
         print('>>> Opção inválida! Tente novamente de 1 a 5 ...')
         sleep(2)
-        main()
 # end def
 
 
